@@ -2,7 +2,7 @@
 This file contains the logic for creating a player character.
 """
 from menus import Menu_List
-from .Entity import Entity
+from system.System import System
 
 
 def get_player_class(class_type:str) -> dict:
@@ -20,18 +20,31 @@ def get_player_class(class_type:str) -> dict:
     return classes.get(class_type)
 
 def create_character():
+    System.clear_screen()
     CLASS_MENU = Menu_List.get_menu("CLASS MENU")
+    print("\n")
+    bar = "-"*75
+    enter_name_message ="Enter the name of your character".center(71)
     
-    character_name = input("Enter the name of your character: ")
+    print(bar)
+    print(f"| {enter_name_message} |")
+    print(bar)
+    
+    character_name = input("")
+    
+    System.clear_screen()
     
     CLASS_MENU.show_menu()
     
     selected_class = CLASS_MENU.select_option()
     
-    class_stats = get_player_class(selected_class)
+    input("\nCharacter has been created.\nPress enter to continue...\n")
+        
+    class_stats = get_player_class(selected_class.strip())
     
-    return Entity(character_name,
-                class_stats.get("health"),
-                class_stats.get("damage")
-                )
+    return {"name": character_name,
+            "health": class_stats.get("health"),
+            "damage": class_stats.get("damage"),
+            "selected_class": selected_class
+    }
     

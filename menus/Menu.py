@@ -6,19 +6,11 @@ import sys
 from validation.Input_Validation import Input_Validation
 
 class Menu(Input_Validation):
-    def __init__(self, name:str, options:list) -> None:
+    
+    def __init__(self, name:str, options:list, graphic: str = "") -> None:
         self.name = name
         self.options = options
-    
-    def change_menu(self, options:list) -> None:
-        self.options = options
-    
-    def show_menu(self) -> None:
-        list_string = ""
-        print(f"\n{self.name}\n")
-        for ops in self.options:
-            list_string += f"| {ops}\t"
-        return print(list_string)
+        self.graphic = graphic
     
     def select_option(self) -> None:
         user_selection = self.val_input_from_list(self.options, "str")
@@ -28,4 +20,15 @@ class Menu(Input_Validation):
         else:
             return user_selection
     
+    def show_menu(self) -> None:
+        if self.graphic == "":
+            bar = "-"*75
+            print(bar)
+            for option in self.options:
+                header = str(option).center(71)
+                print(f"| {header} |")
+
+            print(bar)
+        else:
+            print(self.graphic)
     

@@ -2,6 +2,8 @@
 This file contains the logic for testing user input from std input.
 """
 
+from system.System import System
+
 class Input_Validation:
     def __init__(self) -> None:
         pass
@@ -46,21 +48,30 @@ class Input_Validation:
             elif not func_val[0]:
                 print(error_message)
                 continue
-        
+    
     def val_input_from_list(self, ops_list: list, exp_type:str) -> None:
         while True:
             user_input = self.user_val_loop(
-                "Please enter an option from the list",
+                "Select from menu",
                 "That is not a valid input, try again.\n",
                 exp_type
             )
             
             sanitized_ops_list = map(lambda x:x.lower(), ops_list)
-
-            if user_input in sanitized_ops_list:
+            
+            if user_input.strip() in sanitized_ops_list:
                 return user_input
             else:
                 print(user_input)
                 print("That is not option, please try again.")
                 input("\nPress enter to continue...\n")
+                System.clear_screen()
+                bar = "-"*75
+                print(bar)
+                for option in ops_list:
+                    header = str(option).center(71)
+                    print(f"| {header} |")
+                print(bar)
                 continue
+
+

@@ -2,14 +2,16 @@
 This file contains the logic for creating the stages for
 the game.
 """
+from system.System import System
 
 
 class Stage:
-    def __init__(self, stage_name:str) -> None:
-        self.stage_name = stage_name
+    def __init__(self, stage_graphic:str) -> None:
+        self.stage_graphic = stage_graphic
     
     def display_stage(self):
-        print(self.stage_name)
+        System.clear_screen()
+        return print(self.stage_graphic)
         
     
     
