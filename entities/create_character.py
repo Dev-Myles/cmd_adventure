@@ -8,12 +8,12 @@ from system.System import System
 def get_player_class(class_type:str) -> dict:
     classes = { 
                 "warrior": {
-                    "health": 40,
+                    "health": 60,
                     "damage": 8
                 },
                 "rouge": {
                     "health": 32,
-                    "damage": 14
+                    "damage": 15
                 },
             }
     

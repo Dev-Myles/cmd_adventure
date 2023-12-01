@@ -2,7 +2,7 @@
 This file contains all of the logic for the menus that are displayed
 """
 import sys
-
+import time
 from validation.Input_Validation import Input_Validation
 
 class Menu(Input_Validation):
@@ -16,6 +16,8 @@ class Menu(Input_Validation):
         user_selection = self.val_input_from_list(self.options, "str")
         
         if user_selection.lower() == "quit":
+            print("Exiting CMD Adventure...")
+            time.sleep(3)
             return  sys.exit()
         else:
             return user_selection

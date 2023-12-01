@@ -12,6 +12,7 @@ def get_menu(menu_name:str):
         "START GAME": Menu("CMD Adventure", ["Play Game", "Quit"]),
         "CLASS MENU": Menu("Select Class", ["Rouge", "Warrior"]),
         "PLAY GAME": Menu("","", graphics.get("road")),
+        "END": Menu("End Screen",["Restart","Retry Fight", "Quit"])
     }
     
     return menu_list.get(menu_name)

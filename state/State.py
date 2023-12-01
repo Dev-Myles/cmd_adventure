@@ -29,7 +29,7 @@ class State:
     
     def set_stage(self, selected_stage:str):
         self.previous_stage = self.current_stage
-        self.current_stage = selected_stage
+        self.current_stage = selected_stage.strip()
         
     def set_player(self, player_info):
         self.player_info = player_info
@@ -43,6 +43,13 @@ class State:
         else:
             return False
     
+    def reset_player_info(self):
+        self.player_info = {
+            "name": "",
+            "health":0,
+            "damage":0,
+            "selected_class": ""
+        }
     def display_player_name(self):
         name = self.player_info.get("name")
         if len(name) > 0:
